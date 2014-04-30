@@ -23,4 +23,4 @@ May. 12th	|Process image, generate a new picture after face detection
 May. 14th	|Add share and rate
 May. 19th	|Add iAd or adMob
 May. 21st	|Publish this app on iTunes App Store
-May. 24th	|Get ready for presentation
+May. 23th	|Get ready for presentation
