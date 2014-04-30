@@ -4,13 +4,14 @@ This is the general project plan for ECE 582 Term Project written by Yang Liu.
 ##Goals
 
 ###Minimum Goal
-The minimum goal for this term project is to have an application running on iOS device, like iPhone, to capture image from camera, or get image with album. Then detect faces in the image, switch the chosen faces to generate new funny pictures. 
+The minimum goal for this term project is to build an application running on iOS device, like iPhone, to capture image from camera, or get image from album. Then detect faces in that image, use designed image processing way to generate new funny pictures. The first idea, for example, is to turn faces into zombie-like ones.
 
 ###Reasonable Goal
-For reasonable goal, the program should have several parts, like an opening animation, main view, image processing view, and a share view, which make it a complete program.
+For reasonable goal, this program should be a complete app, which means that we should add more views, share, iAd or adMob, and rate functions to the app and publish it to iTunes app store.
 
 ###Ultimate Goal
-Add share, iAd or adMob, and rate function to the app and publish it to iTunes app store.
+Ulmately, this app should have more than one way make fancy images. Another way to be funny is switch or swap the faces in an image. More ways are to be designed to enrich this app.
+
 
 ##Timeline
 |Date		|Event		|
