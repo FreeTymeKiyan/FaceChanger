@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FaceppAPI.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -19,6 +19,30 @@
 		BB5E7402190F3F9E00E09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73EA190F3F9E00E09EEA /* UIKit.framework */; };
 		BB5E740A190F3F9E00E09EEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB5E7408190F3F9E00E09EEA /* InfoPlist.strings */; };
 		BB5E740C190F3F9E00E09EEA /* FaceChangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5E740B190F3F9E00E09EEA /* FaceChangerTests.m */; };
+		BB7C9D1F191A83A0001A9AA2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7C9D1E191A83A0001A9AA2 /* MainView.xib */; };
+		BB7C9D21191A83BD001A9AA2 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7C9D20191A83BD001A9AA2 /* View.xib */; };
+		BBD4A7B41919D11A007BCAA8 /* FaceppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */; };
+		BBD4A7B51919D11A007BCAA8 /* FaceppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7851919D11A007BCAA8 /* FaceppClient.m */; };
+		BBD4A7B61919D11A007BCAA8 /* FaceppDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7871919D11A007BCAA8 /* FaceppDetection.m */; };
+		BBD4A7B71919D11A007BCAA8 /* FaceppFaceset.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7891919D11A007BCAA8 /* FaceppFaceset.m */; };
+		BBD4A7B81919D11A007BCAA8 /* FaceppGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A78B1919D11A007BCAA8 /* FaceppGroup.m */; };
+		BBD4A7B91919D11A007BCAA8 /* FaceppGrouping.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A78D1919D11A007BCAA8 /* FaceppGrouping.m */; };
+		BBD4A7BA1919D11A007BCAA8 /* FaceppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A78F1919D11A007BCAA8 /* FaceppInfo.m */; };
+		BBD4A7BB1919D11A007BCAA8 /* FaceppPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7911919D11A007BCAA8 /* FaceppPerson.m */; };
+		BBD4A7BC1919D11A007BCAA8 /* FaceppRecognition.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7931919D11A007BCAA8 /* FaceppRecognition.m */; };
+		BBD4A7BD1919D11A007BCAA8 /* FaceppTrainer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7951919D11A007BCAA8 /* FaceppTrainer.m */; };
+		BBD4A7BE1919D11A007BCAA8 /* FaceppError.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7981919D11A007BCAA8 /* FaceppError.m */; };
+		BBD4A7BF1919D11A007BCAA8 /* FaceppResult.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A79A1919D11A007BCAA8 /* FaceppResult.m */; };
+		BBD4A7C01919D11A007BCAA8 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A79D1919D11A007BCAA8 /* CDataScanner.m */; };
+		BBD4A7C11919D11A007BCAA8 /* CFilteringJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7A01919D11A007BCAA8 /* CFilteringJSONSerializer.m */; };
+		BBD4A7C21919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7A21919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.m */; };
+		BBD4A7C31919D11A007BCAA8 /* CJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7A41919D11A007BCAA8 /* CJSONSerialization.m */; };
+		BBD4A7C41919D11A007BCAA8 /* CJSONSerializedData.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7A61919D11A007BCAA8 /* CJSONSerializedData.m */; };
+		BBD4A7C51919D11A007BCAA8 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7A91919D11A007BCAA8 /* CDataScanner_Extensions.m */; };
+		BBD4A7C61919D11A007BCAA8 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7AB1919D11A007BCAA8 /* NSDictionary_JSONExtensions.m */; };
+		BBD4A7C71919D11A007BCAA8 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7AE1919D11A007BCAA8 /* CJSONDeserializer.m */; };
+		BBD4A7C81919D11A007BCAA8 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7B01919D11A007BCAA8 /* CJSONScanner.m */; };
+		BBD4A7C91919D11A007BCAA8 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7B21919D11A007BCAA8 /* CJSONSerializer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +72,53 @@
 		BB5E7407190F3F9E00E09EEA /* FaceChangerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceChangerTests-Info.plist"; sourceTree = "<group>"; };
 		BB5E7409190F3F9E00E09EEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB5E740B190F3F9E00E09EEA /* FaceChangerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceChangerTests.m; sourceTree = "<group>"; };
+		BB7C9D1E191A83A0001A9AA2 /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		BB7C9D20191A83BD001A9AA2 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		BBD4A7811919D11A007BCAA8 /* FaceppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppAPI.h; sourceTree = "<group>"; };
+		BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppAPI.m; sourceTree = "<group>"; };
+		BBD4A7841919D11A007BCAA8 /* FaceppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppClient.h; sourceTree = "<group>"; };
+		BBD4A7851919D11A007BCAA8 /* FaceppClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppClient.m; sourceTree = "<group>"; };
+		BBD4A7861919D11A007BCAA8 /* FaceppDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppDetection.h; sourceTree = "<group>"; };
+		BBD4A7871919D11A007BCAA8 /* FaceppDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppDetection.m; sourceTree = "<group>"; };
+		BBD4A7881919D11A007BCAA8 /* FaceppFaceset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppFaceset.h; sourceTree = "<group>"; };
+		BBD4A7891919D11A007BCAA8 /* FaceppFaceset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppFaceset.m; sourceTree = "<group>"; };
+		BBD4A78A1919D11A007BCAA8 /* FaceppGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppGroup.h; sourceTree = "<group>"; };
+		BBD4A78B1919D11A007BCAA8 /* FaceppGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppGroup.m; sourceTree = "<group>"; };
+		BBD4A78C1919D11A007BCAA8 /* FaceppGrouping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppGrouping.h; sourceTree = "<group>"; };
+		BBD4A78D1919D11A007BCAA8 /* FaceppGrouping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppGrouping.m; sourceTree = "<group>"; };
+		BBD4A78E1919D11A007BCAA8 /* FaceppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppInfo.h; sourceTree = "<group>"; };
+		BBD4A78F1919D11A007BCAA8 /* FaceppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppInfo.m; sourceTree = "<group>"; };
+		BBD4A7901919D11A007BCAA8 /* FaceppPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppPerson.h; sourceTree = "<group>"; };
+		BBD4A7911919D11A007BCAA8 /* FaceppPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppPerson.m; sourceTree = "<group>"; };
+		BBD4A7921919D11A007BCAA8 /* FaceppRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppRecognition.h; sourceTree = "<group>"; };
+		BBD4A7931919D11A007BCAA8 /* FaceppRecognition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppRecognition.m; sourceTree = "<group>"; };
+		BBD4A7941919D11A007BCAA8 /* FaceppTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppTrainer.h; sourceTree = "<group>"; };
+		BBD4A7951919D11A007BCAA8 /* FaceppTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppTrainer.m; sourceTree = "<group>"; };
+		BBD4A7971919D11A007BCAA8 /* FaceppError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppError.h; sourceTree = "<group>"; };
+		BBD4A7981919D11A007BCAA8 /* FaceppError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppError.m; sourceTree = "<group>"; };
+		BBD4A7991919D11A007BCAA8 /* FaceppResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppResult.h; sourceTree = "<group>"; };
+		BBD4A79A1919D11A007BCAA8 /* FaceppResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppResult.m; sourceTree = "<group>"; };
+		BBD4A79C1919D11A007BCAA8 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
+		BBD4A79D1919D11A007BCAA8 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
+		BBD4A79F1919D11A007BCAA8 /* CFilteringJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFilteringJSONSerializer.h; sourceTree = "<group>"; };
+		BBD4A7A01919D11A007BCAA8 /* CFilteringJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFilteringJSONSerializer.m; sourceTree = "<group>"; };
+		BBD4A7A11919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer_BlocksExtensions.h; sourceTree = "<group>"; };
+		BBD4A7A21919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer_BlocksExtensions.m; sourceTree = "<group>"; };
+		BBD4A7A31919D11A007BCAA8 /* CJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerialization.h; sourceTree = "<group>"; };
+		BBD4A7A41919D11A007BCAA8 /* CJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerialization.m; sourceTree = "<group>"; };
+		BBD4A7A51919D11A007BCAA8 /* CJSONSerializedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializedData.h; sourceTree = "<group>"; };
+		BBD4A7A61919D11A007BCAA8 /* CJSONSerializedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializedData.m; sourceTree = "<group>"; };
+		BBD4A7A81919D11A007BCAA8 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
+		BBD4A7A91919D11A007BCAA8 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
+		BBD4A7AA1919D11A007BCAA8 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
+		BBD4A7AB1919D11A007BCAA8 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
+		BBD4A7AD1919D11A007BCAA8 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
+		BBD4A7AE1919D11A007BCAA8 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
+		BBD4A7AF1919D11A007BCAA8 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
+		BBD4A7B01919D11A007BCAA8 /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
+		BBD4A7B11919D11A007BCAA8 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
+		BBD4A7B21919D11A007BCAA8 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
+		BBD4A7B31919D11A007BCAA8 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +178,9 @@
 		BB5E73EC190F3F9E00E09EEA /* FaceChanger */ = {
 			isa = PBXGroup;
 			children = (
+				BB7C9D20191A83BD001A9AA2 /* View.xib */,
+				BB7C9D1E191A83A0001A9AA2 /* MainView.xib */,
+				BBD4A7801919D11A007BCAA8 /* FaceppSDK */,
 				BB5E73F5190F3F9E00E09EEA /* AppDelegate.h */,
 				BB5E73F6190F3F9E00E09EEA /* AppDelegate.m */,
 				BB5E73F8190F3F9E00E09EEA /* Images.xcassets */,
@@ -142,6 +216,106 @@
 				BB5E7408190F3F9E00E09EEA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBD4A7801919D11A007BCAA8 /* FaceppSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A7811919D11A007BCAA8 /* FaceppAPI.h */,
+				BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */,
+				BBD4A7831919D11A007BCAA8 /* FaceppAPISource */,
+				BBD4A7961919D11A007BCAA8 /* FaceppResult */,
+				BBD4A79B1919D11A007BCAA8 /* TouchJSON */,
+			);
+			path = FaceppSDK;
+			sourceTree = "<group>";
+		};
+		BBD4A7831919D11A007BCAA8 /* FaceppAPISource */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A7841919D11A007BCAA8 /* FaceppClient.h */,
+				BBD4A7851919D11A007BCAA8 /* FaceppClient.m */,
+				BBD4A7861919D11A007BCAA8 /* FaceppDetection.h */,
+				BBD4A7871919D11A007BCAA8 /* FaceppDetection.m */,
+				BBD4A7881919D11A007BCAA8 /* FaceppFaceset.h */,
+				BBD4A7891919D11A007BCAA8 /* FaceppFaceset.m */,
+				BBD4A78A1919D11A007BCAA8 /* FaceppGroup.h */,
+				BBD4A78B1919D11A007BCAA8 /* FaceppGroup.m */,
+				BBD4A78C1919D11A007BCAA8 /* FaceppGrouping.h */,
+				BBD4A78D1919D11A007BCAA8 /* FaceppGrouping.m */,
+				BBD4A78E1919D11A007BCAA8 /* FaceppInfo.h */,
+				BBD4A78F1919D11A007BCAA8 /* FaceppInfo.m */,
+				BBD4A7901919D11A007BCAA8 /* FaceppPerson.h */,
+				BBD4A7911919D11A007BCAA8 /* FaceppPerson.m */,
+				BBD4A7921919D11A007BCAA8 /* FaceppRecognition.h */,
+				BBD4A7931919D11A007BCAA8 /* FaceppRecognition.m */,
+				BBD4A7941919D11A007BCAA8 /* FaceppTrainer.h */,
+				BBD4A7951919D11A007BCAA8 /* FaceppTrainer.m */,
+			);
+			path = FaceppAPISource;
+			sourceTree = "<group>";
+		};
+		BBD4A7961919D11A007BCAA8 /* FaceppResult */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A7971919D11A007BCAA8 /* FaceppError.h */,
+				BBD4A7981919D11A007BCAA8 /* FaceppError.m */,
+				BBD4A7991919D11A007BCAA8 /* FaceppResult.h */,
+				BBD4A79A1919D11A007BCAA8 /* FaceppResult.m */,
+			);
+			path = FaceppResult;
+			sourceTree = "<group>";
+		};
+		BBD4A79B1919D11A007BCAA8 /* TouchJSON */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A79C1919D11A007BCAA8 /* CDataScanner.h */,
+				BBD4A79D1919D11A007BCAA8 /* CDataScanner.m */,
+				BBD4A79E1919D11A007BCAA8 /* Experimental */,
+				BBD4A7A71919D11A007BCAA8 /* Extensions */,
+				BBD4A7AC1919D11A007BCAA8 /* JSON */,
+			);
+			path = TouchJSON;
+			sourceTree = "<group>";
+		};
+		BBD4A79E1919D11A007BCAA8 /* Experimental */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A79F1919D11A007BCAA8 /* CFilteringJSONSerializer.h */,
+				BBD4A7A01919D11A007BCAA8 /* CFilteringJSONSerializer.m */,
+				BBD4A7A11919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.h */,
+				BBD4A7A21919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.m */,
+				BBD4A7A31919D11A007BCAA8 /* CJSONSerialization.h */,
+				BBD4A7A41919D11A007BCAA8 /* CJSONSerialization.m */,
+				BBD4A7A51919D11A007BCAA8 /* CJSONSerializedData.h */,
+				BBD4A7A61919D11A007BCAA8 /* CJSONSerializedData.m */,
+			);
+			path = Experimental;
+			sourceTree = "<group>";
+		};
+		BBD4A7A71919D11A007BCAA8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A7A81919D11A007BCAA8 /* CDataScanner_Extensions.h */,
+				BBD4A7A91919D11A007BCAA8 /* CDataScanner_Extensions.m */,
+				BBD4A7AA1919D11A007BCAA8 /* NSDictionary_JSONExtensions.h */,
+				BBD4A7AB1919D11A007BCAA8 /* NSDictionary_JSONExtensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BBD4A7AC1919D11A007BCAA8 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				BBD4A7AD1919D11A007BCAA8 /* CJSONDeserializer.h */,
+				BBD4A7AE1919D11A007BCAA8 /* CJSONDeserializer.m */,
+				BBD4A7AF1919D11A007BCAA8 /* CJSONScanner.h */,
+				BBD4A7B01919D11A007BCAA8 /* CJSONScanner.m */,
+				BBD4A7B11919D11A007BCAA8 /* CJSONSerializer.h */,
+				BBD4A7B21919D11A007BCAA8 /* CJSONSerializer.m */,
+				BBD4A7B31919D11A007BCAA8 /* JSONRepresentation.h */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +393,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7C9D21191A83BD001A9AA2 /* View.xib in Resources */,
+				BB7C9D1F191A83A0001A9AA2 /* MainView.xib in Resources */,
 				BB5E73F1190F3F9E00E09EEA /* InfoPlist.strings in Resources */,
 				BB5E73F9190F3F9E00E09EEA /* Images.xcassets in Resources */,
 			);
@@ -239,8 +415,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD4A7C31919D11A007BCAA8 /* CJSONSerialization.m in Sources */,
+				BBD4A7C11919D11A007BCAA8 /* CFilteringJSONSerializer.m in Sources */,
+				BBD4A7B41919D11A007BCAA8 /* FaceppAPI.m in Sources */,
+				BBD4A7C91919D11A007BCAA8 /* CJSONSerializer.m in Sources */,
 				BB5E73F7190F3F9E00E09EEA /* AppDelegate.m in Sources */,
+				BBD4A7C21919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
+				BBD4A7C41919D11A007BCAA8 /* CJSONSerializedData.m in Sources */,
+				BBD4A7BD1919D11A007BCAA8 /* FaceppTrainer.m in Sources */,
+				BBD4A7BE1919D11A007BCAA8 /* FaceppError.m in Sources */,
+				BBD4A7B81919D11A007BCAA8 /* FaceppGroup.m in Sources */,
+				BBD4A7B61919D11A007BCAA8 /* FaceppDetection.m in Sources */,
+				BBD4A7BC1919D11A007BCAA8 /* FaceppRecognition.m in Sources */,
 				BB5E73F3190F3F9E00E09EEA /* main.m in Sources */,
+				BBD4A7C81919D11A007BCAA8 /* CJSONScanner.m in Sources */,
+				BBD4A7B91919D11A007BCAA8 /* FaceppGrouping.m in Sources */,
+				BBD4A7C61919D11A007BCAA8 /* NSDictionary_JSONExtensions.m in Sources */,
+				BBD4A7BF1919D11A007BCAA8 /* FaceppResult.m in Sources */,
+				BBD4A7C51919D11A007BCAA8 /* CDataScanner_Extensions.m in Sources */,
+				BBD4A7B71919D11A007BCAA8 /* FaceppFaceset.m in Sources */,
+				BBD4A7B51919D11A007BCAA8 /* FaceppClient.m in Sources */,
+				BBD4A7C71919D11A007BCAA8 /* CJSONDeserializer.m in Sources */,
+				BBD4A7BA1919D11A007BCAA8 /* FaceppInfo.m in Sources */,
+				BBD4A7BB1919D11A007BCAA8 /* FaceppPerson.m in Sources */,
+				BBD4A7C01919D11A007BCAA8 /* CDataScanner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FaceChanger/FaceChanger-Prefix.pch";
 				INFOPLIST_FILE = "FaceChanger/FaceChanger-Info.plist";
@@ -370,6 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FaceChanger/FaceChanger-Prefix.pch";
 				INFOPLIST_FILE = "FaceChanger/FaceChanger-Info.plist";
@@ -437,6 +637,7 @@
 				BB5E7411190F3F9E00E09EEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB5E7412190F3F9E00E09EEA /* Build configuration list for PBXNativeTarget "FaceChangerTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +646,7 @@
 				BB5E7414190F3F9E00E09EEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

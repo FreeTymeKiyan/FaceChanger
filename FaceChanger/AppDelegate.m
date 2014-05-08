@@ -16,6 +16,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [FaceppAPI initWithApiKey:@"c24cf4e3fe0dad9050a29ae0f457e947" andApiSecret:@"Q4IdSAQoUOJkpgkVSAaIa1ABtRJKME3q" andRegion:APIServerRegionUS];
     return YES;
 }
 
