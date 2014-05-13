@@ -202,17 +202,14 @@
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
     
     FaceppResult *result = [[FaceppAPI detection] detectWithURL:nil orImageData:UIImageJPEGRepresentation(image, 1) mode:FaceppDetectionModeNormal attribute:FaceppDetectionAttributeNone];
-//    FaceppResult *result = [[FaceppAPI detection] landmarkWithFaceId:@"e8dc5e18fc76450690543253b9480d84" andType:FaceppLandmark83P];
     if (result.success) {
         double image_width = [[result content][@"img_width"] doubleValue] *0.01f;
         double image_height = [[result content][@"img_height"] doubleValue] * 0.01f;
         
-
-        
         UIGraphicsBeginImageContext(image.size);
         [image drawAtPoint:CGPointZero];
         CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetRGBFillColor(context, 0, 0, 1.0, 1.0);
+        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
         CGContextSetLineWidth(context, image_width * 0.7f);
         
         // draw rectangle in the image
@@ -227,6 +224,90 @@
             CGContextStrokeRect(context, rect);
             NSString *faceId = [[result content][@"face"][i] objectForKey:@"face_id"];
             NSLog(@"face_id: %@", faceId);
+            FaceppResult *landmarks = [[FaceppAPI detection] landmarkWithFaceId:faceId andType:FaceppLandmark83P];
+            for (int j=0; j<[[landmarks content] [@"result"] count]; j++) {
+                // left eye
+                double x1 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_bottom"][@"x"] doubleValue] * image_width;
+                double y1 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_bottom"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x1, y1, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x2 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_left_quarter"][@"x"] doubleValue] * image_width;
+                double y2 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_left_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x2, y2, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x3 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_left_corner"][@"x"] doubleValue] * image_width;
+                double y3 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_left_corner"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x3, y3, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x4 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_left_quarter"][@"x"] doubleValue] * image_width;
+                double y4 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_left_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x4, y4, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x5 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_top"][@"x"] doubleValue] * image_width;
+                double y5 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_top"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x5, y5, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x6 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_right_quarter"][@"x"] doubleValue] * image_width;
+                double y6 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_right_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x6, y6, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x7 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_right_corner"][@"x"] doubleValue] * image_width;
+                double y7 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_right_corner"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x7, y7, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x8 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_right_quarter"][@"x"] doubleValue] * image_width;
+                double y8 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_right_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x8, y8, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                // right eye
+                double x9 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_bottom"][@"x"] doubleValue] * image_width;
+                double y9 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_bottom"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x9, y9, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x10 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_left_quarter"][@"x"] doubleValue] * image_width;
+                double y10 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_left_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x10, y10, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x11 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_left_corner"][@"x"] doubleValue] * image_width;
+                double y11 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_left_corner"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x11, y11, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x12 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_left_quarter"][@"x"] doubleValue] * image_width;
+                double y12 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_left_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x12, y12, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x13 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_top"][@"x"] doubleValue] * image_width;
+                double y13 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_top"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x13, y13, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x14 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_right_quarter"][@"x"] doubleValue] * image_width;
+                double y14 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_right_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x14, y14, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x15 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_right_corner"][@"x"] doubleValue] * image_width;
+                double y15 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_right_corner"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x15, y15, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+                
+                double x16 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_right_quarter"][@"x"] doubleValue] * image_width;
+                double y16 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_right_quarter"][@"y"] doubleValue] * image_height;
+                rect = CGRectMake(x16, y16, 1.0, 1.0);
+                CGContextStrokeRect(context, rect);
+            }
         }
         
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -255,7 +336,7 @@
     
     [pool release];
 }
-
+                                                        
 /*
 #pragma mark - Navigation
 

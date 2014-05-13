@@ -19,6 +19,8 @@
 		BB5E7402190F3F9E00E09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73EA190F3F9E00E09EEA /* UIKit.framework */; };
 		BB5E740A190F3F9E00E09EEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB5E7408190F3F9E00E09EEA /* InfoPlist.strings */; };
 		BB5E740C190F3F9E00E09EEA /* FaceChangerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5E740B190F3F9E00E09EEA /* FaceChangerTests.m */; };
+		BB7601F81921A331006D0508 /* JBCroppableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7601F71921A331006D0508 /* JBCroppableImageView.m */; };
+		BB7601FB1921A977006D0508 /* JBCroppableLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7601FA1921A977006D0508 /* JBCroppableLayer.m */; };
 		BBD4A7B41919D11A007BCAA8 /* FaceppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */; };
 		BBD4A7B51919D11A007BCAA8 /* FaceppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7851919D11A007BCAA8 /* FaceppClient.m */; };
 		BBD4A7B61919D11A007BCAA8 /* FaceppDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7871919D11A007BCAA8 /* FaceppDetection.m */; };
@@ -74,6 +76,10 @@
 		BB5E7407190F3F9E00E09EEA /* FaceChangerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FaceChangerTests-Info.plist"; sourceTree = "<group>"; };
 		BB5E7409190F3F9E00E09EEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB5E740B190F3F9E00E09EEA /* FaceChangerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceChangerTests.m; sourceTree = "<group>"; };
+		BB7601F61921A331006D0508 /* JBCroppableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBCroppableImageView.h; sourceTree = "<group>"; };
+		BB7601F71921A331006D0508 /* JBCroppableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBCroppableImageView.m; sourceTree = "<group>"; };
+		BB7601F91921A977006D0508 /* JBCroppableLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBCroppableLayer.h; sourceTree = "<group>"; };
+		BB7601FA1921A977006D0508 /* JBCroppableLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBCroppableLayer.m; sourceTree = "<group>"; };
 		BBD4A7811919D11A007BCAA8 /* FaceppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppAPI.h; sourceTree = "<group>"; };
 		BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppAPI.m; sourceTree = "<group>"; };
 		BBD4A7841919D11A007BCAA8 /* FaceppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppClient.h; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 		BB5E73EC190F3F9E00E09EEA /* FaceChanger */ = {
 			isa = PBXGroup;
 			children = (
+				BB7601FC1921A987006D0508 /* CroppableView */,
 				BBD4A7801919D11A007BCAA8 /* FaceppSDK */,
 				BB5E73F5190F3F9E00E09EEA /* AppDelegate.h */,
 				BB5E73F6190F3F9E00E09EEA /* AppDelegate.m */,
@@ -226,6 +233,17 @@
 				BB5E7408190F3F9E00E09EEA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB7601FC1921A987006D0508 /* CroppableView */ = {
+			isa = PBXGroup;
+			children = (
+				BB7601F91921A977006D0508 /* JBCroppableLayer.h */,
+				BB7601FA1921A977006D0508 /* JBCroppableLayer.m */,
+				BB7601F61921A331006D0508 /* JBCroppableImageView.h */,
+				BB7601F71921A331006D0508 /* JBCroppableImageView.m */,
+			);
+			name = CroppableView;
 			sourceTree = "<group>";
 		};
 		BBD4A7801919D11A007BCAA8 /* FaceppSDK */ = {
@@ -431,6 +449,7 @@
 				BBD4A7C91919D11A007BCAA8 /* CJSONSerializer.m in Sources */,
 				BB5E73F7190F3F9E00E09EEA /* AppDelegate.m in Sources */,
 				BBD4A7C21919D11A007BCAA8 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
+				BB7601FB1921A977006D0508 /* JBCroppableLayer.m in Sources */,
 				BBD4A7C41919D11A007BCAA8 /* CJSONSerializedData.m in Sources */,
 				BBD4A7BD1919D11A007BCAA8 /* FaceppTrainer.m in Sources */,
 				BBD4A7BE1919D11A007BCAA8 /* FaceppError.m in Sources */,
@@ -441,6 +460,7 @@
 				BB5E73F3190F3F9E00E09EEA /* main.m in Sources */,
 				BBD4A7C81919D11A007BCAA8 /* CJSONScanner.m in Sources */,
 				BBE13919191FFC480013F64F /* RootViewController.m in Sources */,
+				BB7601F81921A331006D0508 /* JBCroppableImageView.m in Sources */,
 				BBD4A7B91919D11A007BCAA8 /* FaceppGrouping.m in Sources */,
 				BBD4A7C61919D11A007BCAA8 /* NSDictionary_JSONExtensions.m in Sources */,
 				BBD4A7BF1919D11A007BCAA8 /* FaceppResult.m in Sources */,
