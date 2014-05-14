@@ -22,7 +22,7 @@
 
 @end
 
-@implementation JBCroppableLayer
+@implementation JBCroppableLayer    
 
 - (id)initWithImageView:(UIImageView *)imageView
 {

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "FaceppAPI.h"
+#import "ImageViewController.h"
 
 @interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
     UIImagePickerController *imagePicker;
@@ -16,5 +17,7 @@
 
 @property (retain, nonatomic) IBOutlet UIImageView *chosenImage;
 @property (retain, nonatomic) IBOutlet UILabel *stateLabel;
+
+- (IBAction)unwindToRootview:(UIStoryboardSegue *) segue;
 
 @end

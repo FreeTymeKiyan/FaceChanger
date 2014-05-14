@@ -11,6 +11,15 @@
 
 @implementation RootViewController
 
+- (IBAction)unwindToRootview:(UIStoryboardSegue *)segue
+{
+    ImageViewController *source = [segue sourceViewController];// 通过sourceViewController获取view
+    UIImage * img = source.img;
+    if (img != nil) {
+        [self.chosenImage setImage:img];
+    }
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

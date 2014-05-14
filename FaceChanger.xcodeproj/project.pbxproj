@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0C148519230D7C008784CB /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C148419230D7C008784CB /* ImageViewController.m */; };
 		BB5E73E7190F3F9E00E09EEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E6190F3F9E00E09EEA /* Foundation.framework */; };
 		BB5E73E9190F3F9E00E09EEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E8190F3F9E00E09EEA /* CoreGraphics.framework */; };
 		BB5E73EB190F3F9E00E09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73EA190F3F9E00E09EEA /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB0C148319230D7C008784CB /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		BB0C148419230D7C008784CB /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		BB5E73E3190F3F9E00E09EEA /* FaceChanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceChanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB5E73E6190F3F9E00E09EEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BB5E73E8190F3F9E00E09EEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,13 +193,15 @@
 		BB5E73EC190F3F9E00E09EEA /* FaceChanger */ = {
 			isa = PBXGroup;
 			children = (
+				BBE1390B191FE90B0013F64F /* MainStoryBoard.storyboard */,
 				BB7601FC1921A987006D0508 /* CroppableView */,
 				BBD4A7801919D11A007BCAA8 /* FaceppSDK */,
 				BB5E73F5190F3F9E00E09EEA /* AppDelegate.h */,
 				BB5E73F6190F3F9E00E09EEA /* AppDelegate.m */,
-				BBE1390B191FE90B0013F64F /* MainStoryBoard.storyboard */,
 				BBE13917191FFC480013F64F /* RootViewController.h */,
 				BBE13918191FFC480013F64F /* RootViewController.m */,
+				BB0C148319230D7C008784CB /* ImageViewController.h */,
+				BB0C148419230D7C008784CB /* ImageViewController.m */,
 				BBE1391A19200A2A0013F64F /* MBProgressHUD.h */,
 				BBE1391B19200A2A0013F64F /* MBProgressHUD.m */,
 				BB5E73F8190F3F9E00E09EEA /* Images.xcassets */,
@@ -468,6 +473,7 @@
 				BBD4A7B71919D11A007BCAA8 /* FaceppFaceset.m in Sources */,
 				BBD4A7B51919D11A007BCAA8 /* FaceppClient.m in Sources */,
 				BBD4A7C71919D11A007BCAA8 /* CJSONDeserializer.m in Sources */,
+				BB0C148519230D7C008784CB /* ImageViewController.m in Sources */,
 				BBD4A7BA1919D11A007BCAA8 /* FaceppInfo.m in Sources */,
 				BBD4A7BB1919D11A007BCAA8 /* FaceppPerson.m in Sources */,
 				BBD4A7C01919D11A007BCAA8 /* CDataScanner.m in Sources */,
