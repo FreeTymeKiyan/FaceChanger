@@ -18,6 +18,9 @@
 @property (retain, nonatomic) IBOutlet UIImageView *chosenImage;
 @property (retain, nonatomic) IBOutlet UILabel *stateLabel;
 
+@property (retain, nonatomic) NSMutableArray *leftEyePoints;
+@property (retain, nonatomic) NSMutableArray *rightEyePoints;
+
 - (IBAction)unwindToRootview:(UIStoryboardSegue *) segue;
 
 @end

@@ -14,7 +14,7 @@
 - (IBAction)unwindToRootview:(UIStoryboardSegue *)segue
 {
     ImageViewController *source = [segue sourceViewController];// 通过sourceViewController获取view
-    UIImage * img = source.img;
+    UIImage *img = source.img;
     if (img != nil) {
         [self.chosenImage setImage:img];
     }
@@ -238,84 +238,144 @@
                 // left eye
                 double x1 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_bottom"][@"x"] doubleValue] * image_width;
                 double y1 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_bottom"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x1, y1, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x1, y1, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x2 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_left_quarter"][@"x"] doubleValue] * image_width;
                 double y2 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_left_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x2, y2, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x2, y2, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x3 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_left_corner"][@"x"] doubleValue] * image_width;
                 double y3 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_left_corner"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x3, y3, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x3, y3, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x4 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_left_quarter"][@"x"] doubleValue] * image_width;
                 double y4 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_left_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x4, y4, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x4, y4, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x5 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_top"][@"x"] doubleValue] * image_width;
                 double y5 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_top"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x5, y5, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x5, y5, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x6 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_right_quarter"][@"x"] doubleValue] * image_width;
                 double y6 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_right_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x6, y6, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x6, y6, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x7 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_right_corner"][@"x"] doubleValue] * image_width;
                 double y7 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_right_corner"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x7, y7, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x7, y7, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x8 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_right_quarter"][@"x"] doubleValue] * image_width;
                 double y8 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_right_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x8, y8, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x8, y8, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 // right eye
                 double x9 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_bottom"][@"x"] doubleValue] * image_width;
                 double y9 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_bottom"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x9, y9, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x9, y9, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x10 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_left_quarter"][@"x"] doubleValue] * image_width;
                 double y10 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_left_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x10, y10, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x10, y10, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x11 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_left_corner"][@"x"] doubleValue] * image_width;
                 double y11 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_left_corner"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x11, y11, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x11, y11, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x12 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_left_quarter"][@"x"] doubleValue] * image_width;
                 double y12 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_left_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x12, y12, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x12, y12, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x13 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_top"][@"x"] doubleValue] * image_width;
                 double y13 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_top"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x13, y13, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x13, y13, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x14 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_right_quarter"][@"x"] doubleValue] * image_width;
                 double y14 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_right_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x14, y14, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x14, y14, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x15 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_right_corner"][@"x"] doubleValue] * image_width;
                 double y15 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_right_corner"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x15, y15, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x15, y15, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
                 
                 double x16 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_right_quarter"][@"x"] doubleValue] * image_width;
                 double y16 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_right_quarter"][@"y"] doubleValue] * image_height;
-                rect = CGRectMake(x16, y16, 1.0, 1.0);
-                CGContextStrokeRect(context, rect);
+//                rect = CGRectMake(x16, y16, 1.0, 1.0);
+//                CGContextStrokeRect(context, rect);
+                
+                self.leftEyePoints = [[NSMutableArray alloc] init];
+                
+                CGPoint p;
+                NSValue* value;
+                
+                p = CGPointMake(x1, y1);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x2, y2);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x3, y3);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x4, y4);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x5, y5);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x6, y6);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x7, y7);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                p = CGPointMake(x8, y8);
+                value = [NSValue valueWithCGPoint:p];
+                [_leftEyePoints addObject:value];
+                
+
+                
+                self.rightEyePoints = [[NSMutableArray alloc] init];
+                p = CGPointMake(x9, y9);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x10, y10);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x11, y11);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x12, y12);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x13, y13);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x14, y14);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x15, y15);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+                p = CGPointMake(x16, y16);
+                value = [NSValue valueWithCGPoint:p];
+                [_rightEyePoints addObject:value];
+//                NSLog(@"left eye: %@", leftEyePoints);
+//                NSLog(@"right eye: %@", rightEyePoints);
             }
         }
         
@@ -357,10 +417,28 @@
 }
 */
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"root view prepare for segue");
+    UINavigationController *navController = (UINavigationController *) segue.destinationViewController;
+    ImageViewController *vc = (ImageViewController *)navController.topViewController;
+    if([vc isKindOfClass:[ImageViewController class]]) {
+        vc.img = [[self chosenImage] image];
+        vc.leftEyePoints = self.leftEyePoints;
+        vc.rightEyePoints = self.rightEyePoints;
+//        NSLog(@"left eye:%@", vc.leftEyePoints);
+    } else {
+        
+    }
+}
+
 - (void)dealloc {
     [imagePicker release];
     [_stateLabel release];
     [_chosenImage release];
+    
+    [_leftEyePoints release];
+    [_rightEyePoints release];
     [super dealloc];
 }
 @end
