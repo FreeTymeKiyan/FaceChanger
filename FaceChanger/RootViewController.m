@@ -7,7 +7,8 @@
 //
 
 #import "RootViewController.h"
-
+#define FROM_CAMERA 0
+#define FROM_ALBUM 1
 
 @implementation RootViewController
 
@@ -42,8 +43,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)chooseFromAlbum:(id)sender {
-    [_stateLabel setText:@"choose from album"];
+- (void)chooseFromAlbum
+{
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
     {
         imagePicker.delegate = self;
@@ -61,12 +62,11 @@
         [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
         [alert release];
     }
-
 }
 
-- (IBAction)chooseFromCamera:(id)sender {
-    NSLog(@"choose from camera");
-    [_stateLabel setText:@"choose from camera"];
+- (void)chooseFromCamera
+{
+//    NSLog(@"choose from camera");
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.delegate = self;
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -432,9 +432,65 @@
     }
 }
 
+- (IBAction)addClicked:(id)sender;
+{
+    UIActionSheet *sheet=[[UIActionSheet alloc] initWithTitle:@"Select Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"From Camera" otherButtonTitles: @"From Album", nil];
+    [sheet showInView:self.view];
+}
+
+- (IBAction)saveClicked:(id)sender
+{
+    NSString *sharingWords = @"Test sharing";
+    UIImage *sharingImg = [self.chosenImage image];
+    
+    NSArray *activityItems;
+    if (sharingImg != nil) {
+        activityItems = @[sharingWords, sharingImg];
+    } else {
+        activityItems = @[sharingWords];
+    }
+    UIActivityViewController *activityController =
+    [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
+    [self presentViewController:activityController  animated:YES completion:nil];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+//    NSString *string=[NSString stringWithFormat:@"%@ is clicked",[actionSheet buttonTitleAtIndex:buttonIndex]];
+    switch (buttonIndex) {
+        case FROM_CAMERA:
+            [self chooseFromCamera];
+            break;
+        case FROM_ALBUM:
+            [self chooseFromAlbum];
+            break;
+        default:
+            break;
+    }
+}
+
+- (IBAction)eyesClicked:(id)sender
+{
+    NSLog(@"eyes clicked");
+}
+
+- (IBAction)sketchClicked:(id)sender
+{
+    
+}
+
+- (IBAction)invertClicked:(id)sender
+{
+    
+}
+
+- (IBAction)moreClicked:(id)sender
+{
+    
+}
+
 - (void)dealloc {
     [imagePicker release];
-    [_stateLabel release];
     [_chosenImage release];
     
     [_leftEyePoints release];

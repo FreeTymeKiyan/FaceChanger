@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB0C148519230D7C008784CB /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C148419230D7C008784CB /* ImageViewController.m */; };
+		BB5C23E61926DE5D00C7BC95 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5C23E51926DE5D00C7BC95 /* Social.framework */; };
 		BB5E73E7190F3F9E00E09EEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E6190F3F9E00E09EEA /* Foundation.framework */; };
 		BB5E73E9190F3F9E00E09EEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E8190F3F9E00E09EEA /* CoreGraphics.framework */; };
 		BB5E73EB190F3F9E00E09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73EA190F3F9E00E09EEA /* UIKit.framework */; };
@@ -88,6 +89,7 @@
 /* Begin PBXFileReference section */
 		BB0C148319230D7C008784CB /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		BB0C148419230D7C008784CB /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		BB5C23E51926DE5D00C7BC95 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BB5E73E3190F3F9E00E09EEA /* FaceChanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceChanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB5E73E6190F3F9E00E09EEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BB5E73E8190F3F9E00E09EEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBE0D802192460BC00D107B7 /* libGPUImage.a in Frameworks */,
+				BB5C23E61926DE5D00C7BC95 /* Social.framework in Frameworks */,
 				BBFBF60B1924548300F75965 /* QuartzCore.framework in Frameworks */,
 				BBFBF6091924547800F75965 /* AVFoundation.framework in Frameworks */,
 				BBFBF6071924547000F75965 /* OpenGLES.framework in Frameworks */,
@@ -215,6 +218,7 @@
 		BB5E73E5190F3F9E00E09EEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB5C23E51926DE5D00C7BC95 /* Social.framework */,
 				BBE0D7F61924603600D107B7 /* GPUImage.xcodeproj */,
 				BBFBF60A1924548300F75965 /* QuartzCore.framework */,
 				BBFBF6081924547800F75965 /* AVFoundation.framework */,
