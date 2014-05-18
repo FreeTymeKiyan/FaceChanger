@@ -9,16 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 #import "GPUImage.h"
+#import "FaceppAPI.h"
+#import "MBProgressHUD.h"
+#import <CoreImage/CoreImage.h>
 
 @interface ImageViewController : UIViewController
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (retain, nonatomic) IBOutlet UIButton *doneButton;
+@property (retain, nonatomic) IBOutlet UIButton *processButton;
 @property (retain, nonatomic) IBOutlet UIImageView *processedImg;
+@property (retain, nonatomic) MBProgressHUD *progressView;
 
 @property (retain, nonatomic) UIImage *img;
-@property (retain, nonatomic) NSMutableArray *leftEyePoints;
-@property (retain, nonatomic) NSMutableArray *rightEyePoints;
+@property (retain, nonatomic) NSString *whichBtn;
+@property (retain, nonatomic) UIBezierPath *cropPath;
 
-- (IBAction)multipleClicked:(id)sender;
 - (IBAction)cropClicked:(id)sender;
 - (IBAction)invertClicked:(id)sender;
 - (IBAction)sketchClicked:(id)sender;

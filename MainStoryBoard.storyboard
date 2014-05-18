@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="rsrc.jpg" image="rsrc.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EHW-0O-v0g">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="rsrc.jpg" image="sample.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EHW-0O-v0g">
                                 <rect key="frame" x="20" y="77" width="280" height="430"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -24,52 +24,44 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMr-aV-py2">
-                                <rect key="frame" x="0.0" y="515" width="320" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EOb-8f-waM">
-                                        <rect key="frame" x="20" y="12" width="33" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Eyes">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4G-0Z-q2g">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Eyes" width="57" id="hcw-lB-AH4">
                                         <connections>
-                                            <action selector="eyesClicked:" destination="bDJ-ot-uWL" eventType="touchUpInside" id="fJz-Th-hqG"/>
+                                            <action selector="eyesClicked:" destination="bDJ-ot-uWL" id="6f0-EM-c94"/>
+                                            <segue destination="gNb-WB-BMB" kind="modal" identifier="eyes" modalTransitionStyle="crossDissolve" id="kx8-ND-W6Q"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eND-dS-Zfi">
-                                        <rect key="frame" x="73" y="12" width="48" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Sketch">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                    </barButtonItem>
+                                    <barButtonItem title="Sketch" width="71" id="xp6-9S-FLO">
                                         <connections>
-                                            <action selector="sketchClicked:" destination="bDJ-ot-uWL" eventType="touchUpInside" id="aRH-vp-Mg8"/>
+                                            <action selector="sketchClicked:" destination="bDJ-ot-uWL" id="jRS-bv-G0e"/>
+                                            <segue destination="gNb-WB-BMB" kind="modal" identifier="sketch" modalTransitionStyle="crossDissolve" id="EaY-xf-sEb"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEc-aI-QNk">
-                                        <rect key="frame" x="141" y="12" width="39" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Invert">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                    </barButtonItem>
+                                    <barButtonItem title="Invert" width="66" id="OiM-Kd-YFX">
                                         <connections>
-                                            <action selector="invertClicked:" destination="bDJ-ot-uWL" eventType="touchUpInside" id="930-NP-bCM"/>
+                                            <action selector="invertClicked:" destination="bDJ-ot-uWL" id="mLg-qz-wvt"/>
+                                            <segue destination="gNb-WB-BMB" kind="modal" identifier="invert" modalTransitionStyle="crossDissolve" id="106-hK-5DV"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70M-Yw-jgN">
-                                        <rect key="frame" x="200" y="12" width="44" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="More..">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                    </barButtonItem>
+                                    <barButtonItem title="More.." width="66" id="p2q-Mc-bSd">
                                         <connections>
-                                            <action selector="moreClicked:" destination="bDJ-ot-uWL" eventType="touchUpInside" id="q6w-Fw-38G"/>
+                                            <action selector="moreClicked:" destination="bDJ-ot-uWL" id="YZP-8h-7zm"/>
+                                            <segue destination="avE-R5-HBn" kind="push" identifier="more" id="Efk-XQ-sbP"/>
                                         </connections>
-                                    </button>
-                                </subviews>
-                            </scrollView>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtB-fn-gmL">
+                                <rect key="frame" x="0.0" y="77" width="29" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="revert.png"/>
+                                <connections>
+                                    <action selector="revertClicked:" destination="bDJ-ot-uWL" eventType="touchUpInside" id="2wK-gd-Pmd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <accessibility key="accessibilityConfiguration">
@@ -94,9 +86,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7sW-pM-f4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-182" y="-180"/>
+            <point key="canvasLocation" x="-188" y="-180"/>
         </scene>
-        <!--Image View Controller - Image-->
+        <!--Image View Controller-->
         <scene sceneID="fdn-qq-YDR">
             <objects>
                 <viewController id="4PE-74-7ZE" customClass="ImageViewController" sceneMemberID="viewController">
@@ -108,76 +100,80 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rsrc.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Nmr-Eh-fiA">
-                                <rect key="frame" x="22" y="91" width="277" height="385"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GPUIM" translatesAutoresizingMaskIntoConstraints="NO" id="Nmr-Eh-fiA">
+                                <rect key="frame" x="15" y="25" width="290" height="495"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Heg-mT-otw">
-                                <rect key="frame" x="64" y="484" width="55" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBx-UM-OtE">
+                                <rect key="frame" x="132" y="528" width="56" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Multiple">
+                                <state key="normal" title="Process">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HK-bb-O3l">
+                                <rect key="frame" x="20" y="528" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="multipleClicked:" destination="4PE-74-7ZE" eventType="touchUpInside" id="SuT-Qo-sas"/>
+                                    <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="SNO-OM-Vnd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSU-z2-PqM">
-                                <rect key="frame" x="22" y="484" width="34" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-YB-vqw">
+                                <rect key="frame" x="263" y="528" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Crop">
+                                <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cropClicked:" destination="4PE-74-7ZE" eventType="touchUpInside" id="uzX-Af-1mk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-2i-5pm">
-                                <rect key="frame" x="205" y="484" width="39" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Invert">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="invertClicked:" destination="4PE-74-7ZE" eventType="touchUpInside" id="3Wb-1Q-gi3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdX-JR-x2D">
-                                <rect key="frame" x="252" y="484" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sketch">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sketchClicked:" destination="4PE-74-7ZE" eventType="touchUpInside" id="eoI-fn-qO8"/>
+                                    <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="Iq6-Ph-0aV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Image" id="NtR-BK-tpB">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="89y-Hu-jZp">
-                            <connections>
-                                <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="70L-6x-CUM"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="86B-sP-ZJv">
-                            <connections>
-                                <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="YUz-DC-ocA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="NtR-BK-tpB"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="doneButton" destination="86B-sP-ZJv" id="KIx-M8-sEO"/>
+                        <outlet property="doneButton" destination="bmh-YB-vqw" id="cE9-20-ByI"/>
+                        <outlet property="processButton" destination="YBx-UM-OtE" id="3vb-Jd-C9S"/>
                         <outlet property="processedImg" destination="Nmr-Eh-fiA" id="lPq-Tg-e5N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hP-Eh-IYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="w5R-gv-sL7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="935" y="-180"/>
+            <point key="canvasLocation" x="599" y="-180"/>
+        </scene>
+        <!--View Controller - Effects-->
+        <scene sceneID="SpW-tM-ucN">
+            <objects>
+                <viewController id="avE-R5-HBn" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3JQ-Y9-wol"/>
+                        <viewControllerLayoutGuide type="bottom" id="X77-Q3-yi7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Srb-eZ-9hV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Effects are coming" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzV-hp-afG">
+                                <rect key="frame" x="66" y="273" width="188" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Effects" id="XRg-K6-pR3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Fv-NM-hIa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="599" y="519"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yh0-zz-jKn">
@@ -213,15 +209,20 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iA2-DS-joo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="-180"/>
+            <point key="canvasLocation" x="205" y="-180"/>
         </scene>
     </scenes>
     <resources>
-        <image name="rsrc.jpg" width="404" height="431"/>
+        <image name="GPUIM" width="404" height="431"/>
+        <image name="revert.png" width="29" height="24"/>
+        <image name="sample.jpg" width="600" height="450"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="106-hK-5DV"/>
+    </inferredMetricsTieBreakers>
 </document>

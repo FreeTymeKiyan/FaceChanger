@@ -7,18 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
-#import "FaceppAPI.h"
-#import "ImageViewController.h"
 #import <Social/Social.h>
+#import "ImageViewController.h"
 
 @interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate> {
     UIImagePickerController *imagePicker;
 }
 
 @property (retain, nonatomic) IBOutlet UIImageView *chosenImage;
-@property (retain, nonatomic) NSMutableArray *leftEyePoints;
-@property (retain, nonatomic) NSMutableArray *rightEyePoints;
+@property (retain, nonatomic) UIImage *originalImg;
 
 - (IBAction)unwindToRootview:(UIStoryboardSegue *) segue;
 
@@ -28,5 +25,6 @@
 - (IBAction)sketchClicked:(id)sender;
 - (IBAction)invertClicked:(id)sender;
 - (IBAction)moreClicked:(id)sender;
+- (IBAction)revertClicked:(id)sender;
 
 @end

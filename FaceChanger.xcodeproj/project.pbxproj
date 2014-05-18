@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BB0C148519230D7C008784CB /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C148419230D7C008784CB /* ImageViewController.m */; };
 		BB5C23E61926DE5D00C7BC95 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5C23E51926DE5D00C7BC95 /* Social.framework */; };
+		BB5C23EA1927CEF800C7BC95 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB5C23E91927CEF800C7BC95 /* sample.jpg */; };
+		BB5C23EC1927D6BA00C7BC95 /* revert.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5C23EB1927D6BA00C7BC95 /* revert.png */; };
 		BB5E73E7190F3F9E00E09EEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E6190F3F9E00E09EEA /* Foundation.framework */; };
 		BB5E73E9190F3F9E00E09EEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E8190F3F9E00E09EEA /* CoreGraphics.framework */; };
 		BB5E73EB190F3F9E00E09EEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73EA190F3F9E00E09EEA /* UIKit.framework */; };
@@ -45,7 +47,6 @@
 		BBD4A7C91919D11A007BCAA8 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7B21919D11A007BCAA8 /* CJSONSerializer.m */; };
 		BBE0D802192460BC00D107B7 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE0D7FD1924603600D107B7 /* libGPUImage.a */; };
 		BBE1390C191FE90B0013F64F /* MainStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE1390B191FE90B0013F64F /* MainStoryBoard.storyboard */; };
-		BBE1390E191FEA450013F64F /* rsrc.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBE1390D191FEA450013F64F /* rsrc.jpg */; };
 		BBE13919191FFC480013F64F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE13918191FFC480013F64F /* RootViewController.m */; };
 		BBE1391C19200A2A0013F64F /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE1391B19200A2A0013F64F /* MBProgressHUD.m */; };
 		BBFBF6031924545A00F75965 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFBF6021924545A00F75965 /* CoreMedia.framework */; };
@@ -90,6 +91,8 @@
 		BB0C148319230D7C008784CB /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		BB0C148419230D7C008784CB /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		BB5C23E51926DE5D00C7BC95 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		BB5C23E91927CEF800C7BC95 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		BB5C23EB1927D6BA00C7BC95 /* revert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revert.png; sourceTree = "<group>"; };
 		BB5E73E3190F3F9E00E09EEA /* FaceChanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceChanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB5E73E6190F3F9E00E09EEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BB5E73E8190F3F9E00E09EEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,7 +156,6 @@
 		BBD4A7B31919D11A007BCAA8 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
 		BBE0D7F61924603600D107B7 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		BBE1390B191FE90B0013F64F /* MainStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryBoard.storyboard; path = ../MainStoryBoard.storyboard; sourceTree = "<group>"; };
-		BBE1390D191FEA450013F64F /* rsrc.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rsrc.jpg; sourceTree = "<group>"; };
 		BBE13917191FFC480013F64F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BBE13918191FFC480013F64F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BBE1391A19200A2A0013F64F /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -255,7 +257,8 @@
 		BB5E73ED190F3F9E00E09EEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BBE1390D191FEA450013F64F /* rsrc.jpg */,
+				BB5C23EB1927D6BA00C7BC95 /* revert.png */,
+				BB5C23E91927CEF800C7BC95 /* sample.jpg */,
 				BB5E73EE190F3F9E00E09EEA /* FaceChanger-Info.plist */,
 				BB5E73EF190F3F9E00E09EEA /* InfoPlist.strings */,
 				BB5E73F2190F3F9E00E09EEA /* main.m */,
@@ -491,9 +494,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBE1390C191FE90B0013F64F /* MainStoryBoard.storyboard in Resources */,
-				BBE1390E191FEA450013F64F /* rsrc.jpg in Resources */,
 				BB5E73F1190F3F9E00E09EEA /* InfoPlist.strings in Resources */,
 				BB5E73F9190F3F9E00E09EEA /* Images.xcassets in Resources */,
+				BB5C23EA1927CEF800C7BC95 /* sample.jpg in Resources */,
+				BB5C23EC1927D6BA00C7BC95 /* revert.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
