@@ -36,7 +36,7 @@
 //                     forControlEvents:UIControlEventTouchUpInside];
         
         self.progressView = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.progressView setLabelText:@"Transforming Eyes..."];
+        [self.progressView setLabelText:@"Detecting Eyes..."];
         [self.view addSubview:self.progressView];
         [self.progressView show:YES];
         
