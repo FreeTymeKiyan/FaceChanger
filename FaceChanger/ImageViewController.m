@@ -30,31 +30,47 @@
     [self.processedImg setImage:self.img];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     if ([self.whichBtn isEqualToString:@"eyes"]) {
-        [self.processBtn setTitle:@"Eyes"];
         [self.processBtn setTarget:self];
         [self.processBtn setAction:@selector(cropClicked:)];
 //        [self.processBtn addTarget:self action:@selector(cropClicked:)
 //                     forControlEvents:UIControlEventTouchUpInside];
+        
         self.progressView = [[MBProgressHUD alloc] initWithView:self.view];
-        [self.progressView setLabelText:@"Analizing Human..."];
+        [self.progressView setLabelText:@"Transforming Eyes..."];
         [self.view addSubview:self.progressView];
         [self.progressView show:YES];
-
+        
         [self performSelectorInBackground:@selector(detectWithImage:) withObject:self.img];
     } else if([self.whichBtn isEqualToString:@"sketch"]) {
 //        [self.processButton setTitle:@"Sketch" forState:UIControlStateNormal];
 //        [self.processButton addTarget:self action:@selector(sketchClicked:)
 //                     forControlEvents:UIControlEventTouchUpInside];
-        [self.processBtn setTitle:@"Sketch"];
         [self.processBtn setTarget:self];
         [self.processBtn setAction:@selector(sketchClicked:)];
     } else if ([self.whichBtn isEqualToString:@"invert"]) {
 //        [self.processButton setTitle:@"Invert" forState:UIControlStateNormal];
 //        [self.processButton addTarget:self action:@selector(invertClicked:)
 //                     forControlEvents:UIControlEventTouchUpInside];
-        [self.processBtn setTitle:@"Invert"];
         [self.processBtn setTarget:self];
         [self.processBtn setAction:@selector(invertClicked:)];
+    } else if ([self.whichBtn isEqualToString:@"face"]) {
+        [self.processBtn setEnabled:NO];
+        
+        self.progressView = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.progressView setLabelText:@"Analizing Faces..."];
+        [self.view addSubview:self.progressView];
+        [self.progressView show:YES];
+        
+        [self performSelectorInBackground:@selector(detectFacesWithImg:) withObject:self.img];
+    } else if ([self.whichBtn isEqualToString:@"landmarks"]) {
+        [self.processBtn setEnabled:NO];
+
+        self.progressView = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.progressView setLabelText:@"Analizing Landmarks..."];
+        [self.view addSubview:self.progressView];
+        [self.progressView show:YES];
+        
+        [self performSelectorInBackground:@selector(detectLandmarksWithImg:) withObject:self.img];
     }
 }
 
@@ -107,6 +123,10 @@
     UIImage *blendImage = [filter2 imageFromCurrentFramebuffer];
     
     [self.processedImg setImage:blendImage];
+    [picture1 release];
+    [picture2 release];
+    [filter1 release];
+    [filter2 release];
 }
 
 - (UIBezierPath *)arrayToBezierPaths:(NSMutableArray *) arr
@@ -323,6 +343,8 @@
                     //                NSLog(@"right eye: %@", rightEyePoints);
                     [self.cropPath appendPath:[self arrayToBezierPaths:leftEyePoints]];
                     [self.cropPath appendPath:[self arrayToBezierPaths:rightEyePoints]];
+                    [leftEyePoints release];
+                    [rightEyePoints release];
                 }
             }
             UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -352,7 +374,6 @@
     [self.progressView hide:YES];
 }
 
-
 - (IBAction)sketchClicked:(id)sender
 {
     GPUImageSketchFilter *filter = [[GPUImageSketchFilter alloc] init];
@@ -366,7 +387,7 @@
     
     // The filter strength property affects the dynamic range of the filter. High values can make edges more visible, but can lead to saturation. Default of 1.0.
     //    CGFloat edgeStrength;
-    
+    [filter release];
 }
 
 - (IBAction)invertClicked:(id)sender
@@ -374,6 +395,137 @@
     GPUImageColorInvertFilter *filter = [[GPUImageColorInvertFilter alloc] init];
     UIImage *filteredImg = [filter imageByFilteringImage:self.img];
     [self.processedImg setImage:filteredImg];
+    [filter release];
+}
+
+- (IBAction)faceClicked:(id)sender
+{
+    
+}
+
+- (IBAction)landmarksClicked:(id)sender
+{
+    
+}
+
+- (void) detectFacesWithImg:(UIImage *)img
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    // face detection
+    FaceppResult *result = [[FaceppAPI detection] detectWithURL:nil orImageData:UIImageJPEGRepresentation(img, 1) mode:FaceppDetectionModeNormal attribute:FaceppDetectionAttributeNone];
+    if (result.success) {
+        double image_width = [[result content][@"img_width"] doubleValue] *0.01f;
+        double image_height = [[result content][@"img_height"] doubleValue] * 0.01f;
+        
+        UIGraphicsBeginImageContext(img.size);
+        [img drawAtPoint:CGPointZero];
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetRGBStrokeColor(context, 102.0 / 255, 204.0 / 255, 1.0, 1.0);
+        CGContextSetLineWidth(context, image_width * 0.7f);
+        
+        // draw rectangle in the image
+        int face_count = [[result content][@"face"] count];
+        if (face_count == 0) {
+            [self.progressView removeFromSuperview];
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"No Face Detected"
+                                  message:@"Please try with another picture."
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+            [alert release];
+        } else {
+            for (int i=0; i<face_count; i++) {
+                double width = [[result content][@"face"][i][@"position"][@"width"] doubleValue];
+                double height = [[result content][@"face"][i][@"position"][@"height"] doubleValue];
+                CGRect rect = CGRectMake(([[result content][@"face"][i][@"position"][@"center"][@"x"] doubleValue] - width/2) * image_width, ([[result content][@"face"][i][@"position"][@"center"][@"y"] doubleValue] - height/2) * image_height, width * image_width, height * image_height);
+                CGContextStrokeRect(context, rect);
+            }
+        }
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [_processedImg setImage:newImage];
+    } else {
+        // some errors occurred
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat:@"error message: %@", [result error].message]
+                              message:@""
+                              delegate:nil
+                              cancelButtonTitle:@"OK!"
+                              otherButtonTitles:nil];
+        [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+        [alert release];
+    }
+    [img release];
+    [pool release];
+    [self.progressView hide:YES];
+}
+
+- (void) detectLandmarksWithImg:(UIImage *)img
+{
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    // face detection
+    FaceppResult *result = [[FaceppAPI detection] detectWithURL:nil orImageData:UIImageJPEGRepresentation(img, 1) mode:FaceppDetectionModeNormal attribute:FaceppDetectionAttributeNone];
+    if (result.success) {
+        double image_width = [[result content][@"img_width"] doubleValue] *0.01f;
+        double image_height = [[result content][@"img_height"] doubleValue] * 0.01f;
+        
+        UIGraphicsBeginImageContext(img.size);
+        [img drawAtPoint:CGPointZero];
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetRGBStrokeColor(context, 102.0 / 255, 204.0 / 255, 1.0, 1.0);
+        CGContextSetLineWidth(context, image_width * 0.7f);
+        
+        // draw rectangle in the image
+        int face_count = [[result content][@"face"] count];
+        if (face_count == 0) {
+            [self.progressView removeFromSuperview];
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"No Face Detected"
+                                  message:@"Please try with another picture."
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+            [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+            [alert release];
+        } else {
+            for (int i=0; i<face_count; i++) {
+                NSString *faceId = [[result content][@"face"][i] objectForKey:@"face_id"];
+                FaceppResult *landmarks = [[FaceppAPI detection] landmarkWithFaceId:faceId andType:FaceppLandmark83P];
+                // get face landmarks
+                for (int j=0; j<[[landmarks content] [@"result"] count]; j++) {
+                    for (int k = 0; k < [[landmarks content][@"result"][j][@"landmark"] count]; k++) {
+                        NSEnumerator *enumerator = [[landmarks content][@"result"][j][@"landmark"] keyEnumerator];
+                        id key;
+                        while ((key = [enumerator nextObject])) {
+                            /* code that uses the returned key */
+                            double x1 = [[landmarks content][@"result"][j][@"landmark"][key][@"x"] doubleValue] * image_width;
+                            double y1 = [[landmarks content][@"result"][j][@"landmark"][key][@"y"] doubleValue] * image_height;
+                            CGRect rect = CGRectMake(x1, y1, 1, 1);
+                            CGContextStrokeRect(context, rect);
+                        }
+                    }
+                }
+            }
+        }
+        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [_processedImg setImage:newImage];
+    } else {
+        // some errors occurred
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:[NSString stringWithFormat:@"error message: %@", [result error].message]
+                              message:@""
+                              delegate:nil
+                              cancelButtonTitle:@"OK!"
+                              otherButtonTitles:nil];
+        [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+        [alert release];
+    }
+    [img release];
+    [pool release];
+    [self.progressView hide:YES];
 }
 
 - (BOOL)prefersStatusBarHidden

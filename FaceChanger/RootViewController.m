@@ -135,7 +135,6 @@
 
     [self.chosenImage setImage:imageToDisplay];
     self.originalImg = imageToDisplay;
-    [imageToDisplay release];
     [imagePicker dismissViewControllerAnimated:YES completion:nil];
     
     //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -264,7 +263,8 @@
     }
     UIActivityViewController *activityController =
     [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
-    [self presentViewController:activityController  animated:YES completion:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+    [activityController release];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
