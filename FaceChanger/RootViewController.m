@@ -38,6 +38,14 @@
     self.originalImg = [self.chosenImage image];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    CGSize toolbarSize = [self.toolbarScrollView bounds].size;
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    [self.toolbarScrollView setContentSize:CGSizeMake(screenSize.width * 1.5, toolbarSize.height)];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -226,8 +234,11 @@
     if([segue.identifier isEqualToString:@"more"]) {
         
     } else {
-        UINavigationController *navController = (UINavigationController *) segue.destinationViewController;
-        ImageViewController *vc = (ImageViewController *)navController.topViewController;
+        ImageViewController *vc = (ImageViewController *) segue.destinationViewController;
+//        ImageViewController *vc = (ImageViewController *)navController.topViewController;
+//        if ([vc isKindOfClass:[ImageViewController class]]) {
+//            NSLog(@"111");
+//        }
         vc.img = [[self chosenImage] image];
         vc.whichBtn = segue.identifier;
         //        NSLog(@"left eye:%@", vc.leftEyePoints);
@@ -300,6 +311,7 @@
 - (void)dealloc {
     [imagePicker release];
     [_chosenImage release];
+    [_toolbarScrollView release];
     [super dealloc];
 }
 @end

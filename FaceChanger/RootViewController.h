@@ -10,10 +10,10 @@
 #import <Social/Social.h>
 #import "ImageViewController.h"
 
-@interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate> {
+@interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UIScrollViewDelegate> {
     UIImagePickerController *imagePicker;
 }
-
+@property (retain, nonatomic) IBOutlet UIScrollView *toolbarScrollView;
 @property (retain, nonatomic) IBOutlet UIImageView *chosenImage;
 @property (retain, nonatomic) UIImage *originalImg;
 
