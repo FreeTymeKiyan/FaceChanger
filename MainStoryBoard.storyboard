@@ -54,8 +54,8 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtB-fn-gmL">
-                                <rect key="frame" x="0.0" y="77" width="29" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtB-fn-gmL">
+                                <rect key="frame" x="0.0" y="64" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="revert.png"/>
                                 <connections>
@@ -74,7 +74,7 @@
                                 <action selector="addClicked:" destination="bDJ-ot-uWL" id="jkR-0o-bDd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="p7Z-wV-LY9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="p7Z-wV-LY9">
                             <connections>
                                 <action selector="saveClicked:" destination="bDJ-ot-uWL" id="ERc-db-Y0h"/>
                             </connections>
@@ -104,33 +104,25 @@
                                 <rect key="frame" x="15" y="25" width="290" height="495"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YBx-UM-OtE">
-                                <rect key="frame" x="132" y="528" width="56" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Process">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HK-bb-O3l">
-                                <rect key="frame" x="20" y="528" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="SNO-OM-Vnd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-YB-vqw">
-                                <rect key="frame" x="263" y="528" width="37" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="Iq6-Ph-0aV"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o9x-tX-Niz">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="stop" id="pUp-Sa-LmY">
+                                        <connections>
+                                            <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="OTo-YW-q3e"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ug8-JO-FNV"/>
+                                    <barButtonItem style="plain" systemItem="edit" id="i0v-a6-VBB"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tor-IW-uPN"/>
+                                    <barButtonItem systemItem="done" id="Oqu-4G-hNc">
+                                        <connections>
+                                            <segue destination="w5R-gv-sL7" kind="unwind" unwindAction="unwindToRootview:" id="x7D-XL-gPg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -138,8 +130,8 @@
                     <navigationItem key="navigationItem" id="NtR-BK-tpB"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="doneButton" destination="bmh-YB-vqw" id="cE9-20-ByI"/>
-                        <outlet property="processButton" destination="YBx-UM-OtE" id="3vb-Jd-C9S"/>
+                        <outlet property="doneButton" destination="Oqu-4G-hNc" id="flR-35-BN9"/>
+                        <outlet property="processBtn" destination="i0v-a6-VBB" id="WQ5-Ib-WOv"/>
                         <outlet property="processedImg" destination="Nmr-Eh-fiA" id="lPq-Tg-e5N"/>
                     </connections>
                 </viewController>
@@ -160,8 +152,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Effects are coming" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzV-hp-afG">
-                                <rect key="frame" x="66" y="273" width="188" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Effects are coming~" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzV-hp-afG">
+                                <rect key="frame" x="61" y="273" width="198" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -223,6 +215,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="106-hK-5DV"/>
+        <segue reference="kx8-ND-W6Q"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,9 +30,11 @@
     [self.processedImg setImage:self.img];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     if ([self.whichBtn isEqualToString:@"eyes"]) {
-        [self.processButton setTitle:@"Eyes" forState:UIControlStateNormal];
-        [self.processButton addTarget:self action:@selector(cropClicked:)
-                     forControlEvents:UIControlEventTouchUpInside];
+        [self.processBtn setTitle:@"Eyes"];
+        [self.processBtn setTarget:self];
+        [self.processBtn setAction:@selector(cropClicked:)];
+//        [self.processBtn addTarget:self action:@selector(cropClicked:)
+//                     forControlEvents:UIControlEventTouchUpInside];
         self.progressView = [[MBProgressHUD alloc] initWithView:self.view];
         [self.progressView setLabelText:@"Analizing Human..."];
         [self.view addSubview:self.progressView];
@@ -40,13 +42,19 @@
 
         [self performSelectorInBackground:@selector(detectWithImage:) withObject:self.img];
     } else if([self.whichBtn isEqualToString:@"sketch"]) {
-        [self.processButton setTitle:@"Sketch" forState:UIControlStateNormal];
-        [self.processButton addTarget:self action:@selector(sketchClicked:)
-                     forControlEvents:UIControlEventTouchUpInside];
+//        [self.processButton setTitle:@"Sketch" forState:UIControlStateNormal];
+//        [self.processButton addTarget:self action:@selector(sketchClicked:)
+//                     forControlEvents:UIControlEventTouchUpInside];
+        [self.processBtn setTitle:@"Sketch"];
+        [self.processBtn setTarget:self];
+        [self.processBtn setAction:@selector(sketchClicked:)];
     } else if ([self.whichBtn isEqualToString:@"invert"]) {
-        [self.processButton setTitle:@"Invert" forState:UIControlStateNormal];
-        [self.processButton addTarget:self action:@selector(invertClicked:)
-                     forControlEvents:UIControlEventTouchUpInside];
+//        [self.processButton setTitle:@"Invert" forState:UIControlStateNormal];
+//        [self.processButton addTarget:self action:@selector(invertClicked:)
+//                     forControlEvents:UIControlEventTouchUpInside];
+        [self.processBtn setTitle:@"Invert"];
+        [self.processBtn setTarget:self];
+        [self.processBtn setAction:@selector(invertClicked:)];
     }
 }
 
@@ -153,7 +161,7 @@
         // draw rectangle in the image
         int face_count = [[result content][@"face"] count];
         if (face_count == 0) {
-            [self.progressView hide:YES];
+            [self.progressView removeFromSuperview];
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle:@"No Face Detected"
                                   message:@"Please try with another picture."
@@ -374,12 +382,12 @@
 }
 
 - (void)dealloc {
-    [_doneButton release];
     [_processedImg release];
 //    [_img release];
-    [_processButton release];
+    [_processBtn release];
     [_cropPath release];
     [_progressView release];
+    [_doneButton release];
     [super dealloc];
 }
 @end

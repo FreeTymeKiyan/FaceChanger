@@ -14,8 +14,9 @@
 #import <CoreImage/CoreImage.h>
 
 @interface ImageViewController : UIViewController
-@property (retain, nonatomic) IBOutlet UIButton *doneButton;
-@property (retain, nonatomic) IBOutlet UIButton *processButton;
+
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *processBtn;
 @property (retain, nonatomic) IBOutlet UIImageView *processedImg;
 @property (retain, nonatomic) MBProgressHUD *progressView;
 
