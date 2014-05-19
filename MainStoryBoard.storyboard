@@ -20,7 +20,7 @@
                                 <rect key="frame" x="20" y="69" width="280" height="430"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtB-fn-gmL">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtB-fn-gmL">
                                 <rect key="frame" x="0.0" y="69" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="revert.png"/>
@@ -251,7 +251,7 @@
     </scenes>
     <resources>
         <image name="GPUIM" width="404" height="431"/>
-        <image name="revert.png" width="29" height="24"/>
+        <image name="revert.png" width="90" height="90"/>
         <image name="sample.jpg" width="600" height="450"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
