@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB0C148519230D7C008784CB /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0C148419230D7C008784CB /* ImageViewController.m */; };
+		BB2D3820192AB51100FB6647 /* revert.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2D381F192AB51100FB6647 /* revert.png */; };
 		BB5C23E61926DE5D00C7BC95 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5C23E51926DE5D00C7BC95 /* Social.framework */; };
 		BB5C23EA1927CEF800C7BC95 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB5C23E91927CEF800C7BC95 /* sample.jpg */; };
 		BB5E73E7190F3F9E00E09EEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB5E73E6190F3F9E00E09EEA /* Foundation.framework */; };
@@ -30,7 +31,6 @@
 		BB88C1B219296A1200106EBF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88C1B119296A1200106EBF /* MessageUI.framework */; };
 		BB88C1B419296A1B00106EBF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88C1B319296A1B00106EBF /* StoreKit.framework */; };
 		BB88C1B619296A2600106EBF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB88C1B519296A2600106EBF /* SystemConfiguration.framework */; };
-		BB88C1BC1929A22600106EBF /* revert.png in Resources */ = {isa = PBXBuildFile; fileRef = BB88C1BB1929A22600106EBF /* revert.png */; };
 		BBD4A7B41919D11A007BCAA8 /* FaceppAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */; };
 		BBD4A7B51919D11A007BCAA8 /* FaceppClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7851919D11A007BCAA8 /* FaceppClient.m */; };
 		BBD4A7B61919D11A007BCAA8 /* FaceppDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD4A7871919D11A007BCAA8 /* FaceppDetection.m */; };
@@ -98,6 +98,7 @@
 /* Begin PBXFileReference section */
 		BB0C148319230D7C008784CB /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		BB0C148419230D7C008784CB /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		BB2D381F192AB51100FB6647 /* revert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revert.png; sourceTree = "<group>"; };
 		BB5C23E51926DE5D00C7BC95 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BB5C23E91927CEF800C7BC95 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 		BB5E73E3190F3F9E00E09EEA /* FaceChanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceChanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +137,6 @@
 		BB88C1B119296A1200106EBF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BB88C1B319296A1B00106EBF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BB88C1B519296A2600106EBF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		BB88C1BB1929A22600106EBF /* revert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revert.png; sourceTree = "<group>"; };
 		BBD4A7811919D11A007BCAA8 /* FaceppAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppAPI.h; sourceTree = "<group>"; };
 		BBD4A7821919D11A007BCAA8 /* FaceppAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceppAPI.m; sourceTree = "<group>"; };
 		BBD4A7841919D11A007BCAA8 /* FaceppClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceppClient.h; sourceTree = "<group>"; };
@@ -299,7 +299,7 @@
 		BB5E73ED190F3F9E00E09EEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BB88C1BB1929A22600106EBF /* revert.png */,
+				BB2D381F192AB51100FB6647 /* revert.png */,
 				BB5C23E91927CEF800C7BC95 /* sample.jpg */,
 				BB5E73EE190F3F9E00E09EEA /* FaceChanger-Info.plist */,
 				BB5E73EF190F3F9E00E09EEA /* InfoPlist.strings */,
@@ -561,7 +561,7 @@
 				BB5E73F9190F3F9E00E09EEA /* Images.xcassets in Resources */,
 				BB5C23EA1927CEF800C7BC95 /* sample.jpg in Resources */,
 				BB88C1A81929699000106EBF /* README.txt in Resources */,
-				BB88C1BC1929A22600106EBF /* revert.png in Resources */,
+				BB2D3820192AB51100FB6647 /* revert.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
