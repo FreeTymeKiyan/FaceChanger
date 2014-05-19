@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
 #import "ImageViewController.h"
+#import "GADBannerView.h"
 
 @interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UIScrollViewDelegate> {
     UIImagePickerController *imagePicker;
+    GADBannerView *bannerView_;
 }
 @property (retain, nonatomic) IBOutlet UIScrollView *toolbarScrollView;
 @property (retain, nonatomic) IBOutlet UIImageView *chosenImage;

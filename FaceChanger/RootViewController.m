@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #define FROM_CAMERA 0
 #define FROM_ALBUM 1
+#define MY_BANNER_UNIT_ID @"ca-app-pub-3830008196770332/1800879607"
 
 @implementation RootViewController
 
@@ -34,8 +35,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CGSize screenSize = [[UIScreen mainScreen]bounds].size;
+    
     imagePicker = [[UIImagePickerController alloc] init];
     self.originalImg = [self.chosenImage image];
+    
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    [bannerView_ setFrame:CGRectMake(0, screenSize.height - self.toolbarScrollView.frame.size.height - 50, screenSize.width, 50)];
+    // Specify the ad unit ID.
+    bannerView_.adUnitID = MY_BANNER_UNIT_ID;
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    
+    // Initiate a generic request to load it with an ad.
+
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:
+                           @"3b9462c81bb3625a0fee115abbb10b30",
+                           nil];
+    [bannerView_ loadRequest:request];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -309,6 +330,9 @@
 }
 
 - (void)dealloc {
+    // Don't release the bannerView_ if you are using ARC in your project
+    [bannerView_ release];
+
     [imagePicker release];
     [_chosenImage release];
     [_toolbarScrollView release];

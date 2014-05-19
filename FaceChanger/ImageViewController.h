@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreImage/CoreImage.h>
 #import "RootViewController.h"
 #import "GPUImage.h"
 #import "FaceppAPI.h"
 #import "MBProgressHUD.h"
-#import <CoreImage/CoreImage.h>
+#import "GADBannerView.h"
 
-@interface ImageViewController : UIViewController
+@interface ImageViewController : UIViewController {
+    GADBannerView *bannerView_;
+}
 
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *processBtn;

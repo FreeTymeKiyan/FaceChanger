@@ -7,6 +7,7 @@
 //
 
 #import "ImageViewController.h"
+#define MY_BANNER_UNIT_ID @"ca-app-pub-3830008196770332/3939774004"
 
 @interface ImageViewController ()
 
@@ -72,6 +73,24 @@
         
         [self performSelectorInBackground:@selector(detectLandmarksWithImg:) withObject:self.img];
     }
+    
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+
+    // Specify the ad unit ID.
+    bannerView_.adUnitID = MY_BANNER_UNIT_ID;
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    
+    // Initiate a generic request to load it with an ad.
+    
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:
+                           @"3b9462c81bb3625a0fee115abbb10b30",
+                           nil];
+    [bannerView_ loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning
@@ -534,8 +553,9 @@
 }
 
 - (void)dealloc {
+    // Don't release the bannerView_ if you are using ARC in your project
+    [bannerView_ release];
     [_processedImg release];
-//    [_img release];
     [_processBtn release];
     [_cropPath release];
     [_progressView release];
