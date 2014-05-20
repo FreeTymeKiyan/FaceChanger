@@ -12,6 +12,7 @@
 #define MY_BANNER_UNIT_ID @"ca-app-pub-3830008196770332/1800879607"
 
 @implementation RootViewController
+@synthesize originalImg;
 
 - (IBAction)unwindToRootview:(UIStoryboardSegue *)segue
 {
@@ -19,6 +20,8 @@
     UIImage *img = source.img;
     if (img != nil) {
         [self.chosenImage setImage:img];
+        [img release];
+        [originalImg retain];
     }
 }
 
@@ -39,7 +42,8 @@
     
     imagePicker = [[UIImagePickerController alloc] init];
     self.originalImg = [self.chosenImage image];
-    
+    [originalImg retain];
+
     bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
     [bannerView_ setFrame:CGRectMake(0, screenSize.height - self.toolbarScrollView.frame.size.height - 50, screenSize.width, 50)];
     // Specify the ad unit ID.
@@ -71,6 +75,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    NSLog(@"MMMMMMMMMMMMMMMMMMMM");
 }
 
 - (void)chooseFromAlbum
@@ -129,7 +134,8 @@
     return newImage;
 }
 
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
 
 
     UIImage *sourceImage = info[UIImagePickerControllerOriginalImage];
@@ -153,9 +159,11 @@
     sourceImage = [self scaleImage:sourceImage scaledToSize:imageSize];
     
     UIImage *imageToDisplay = [self fixOrientation:sourceImage];
-
+    
     [self.chosenImage setImage:imageToDisplay];
-    self.originalImg = imageToDisplay;
+    self.originalImg = [self.chosenImage image];
+    [originalImg retain];
+    [imageToDisplay release];
     [imagePicker dismissViewControllerAnimated:YES completion:nil];
     
     //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -326,13 +334,13 @@
 - (IBAction)revertClicked:(id)sender
 {
     // confirm before reverting
-    [self.chosenImage setImage:self.originalImg];
+    [self.chosenImage setImage:originalImg];
 }
 
 - (void)dealloc {
     // Don't release the bannerView_ if you are using ARC in your project
     [bannerView_ release];
-
+    originalImg = nil;
     [imagePicker release];
     [_chosenImage release];
     [_toolbarScrollView release];
