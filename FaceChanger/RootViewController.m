@@ -20,7 +20,6 @@
     UIImage *img = source.img;
     if (img != nil) {
         [self.chosenImage setImage:img];
-        [img release];
         [originalImg retain];
     }
 }
@@ -136,8 +135,6 @@
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-
-
     UIImage *sourceImage = info[UIImagePickerControllerOriginalImage];
     
 //  img compression
@@ -163,7 +160,6 @@
     [self.chosenImage setImage:imageToDisplay];
     self.originalImg = [self.chosenImage image];
     [originalImg retain];
-    [imageToDisplay release];
     [imagePicker dismissViewControllerAnimated:YES completion:nil];
     
     //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];

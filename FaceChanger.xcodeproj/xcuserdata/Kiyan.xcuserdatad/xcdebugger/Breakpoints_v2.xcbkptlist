@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceChanger/RootViewController.m"
-            timestampString = "422238441.966639"
+            timestampString = "422325767.884783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
