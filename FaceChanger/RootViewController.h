@@ -7,20 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD.h"
-#import "FaceppAPI.h"
+#import <Social/Social.h>
 #import "ImageViewController.h"
+#import "GADBannerView.h"
 
-@interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+@interface RootViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UIScrollViewDelegate> {
     UIImagePickerController *imagePicker;
+    GADBannerView *bannerView_;
 }
-
+@property (retain, nonatomic) IBOutlet UIScrollView *toolbarScrollView;
 @property (retain, nonatomic) IBOutlet UIImageView *chosenImage;
-@property (retain, nonatomic) IBOutlet UILabel *stateLabel;
-
-@property (retain, nonatomic) NSMutableArray *leftEyePoints;
-@property (retain, nonatomic) NSMutableArray *rightEyePoints;
+@property (retain, nonatomic) UIImage *originalImg;
 
 - (IBAction)unwindToRootview:(UIStoryboardSegue *) segue;
+
+- (IBAction)addClicked:(id)sender;
+- (IBAction)saveClicked:(id)sender;
+- (IBAction)eyesClicked:(id)sender;
+- (IBAction)sketchClicked:(id)sender;
+- (IBAction)invertClicked:(id)sender;
+- (IBAction)moreClicked:(id)sender;
+- (IBAction)revertClicked:(id)sender;
 
 @end

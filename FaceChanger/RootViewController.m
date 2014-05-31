@@ -7,9 +7,12 @@
 //
 
 #import "RootViewController.h"
-
+#define FROM_CAMERA 0
+#define FROM_ALBUM 1
+#define MY_BANNER_UNIT_ID @"ca-app-pub-3830008196770332/1800879607"
 
 @implementation RootViewController
+@synthesize originalImg;
 
 - (IBAction)unwindToRootview:(UIStoryboardSegue *)segue
 {
@@ -17,6 +20,7 @@
     UIImage *img = source.img;
     if (img != nil) {
         [self.chosenImage setImage:img];
+        [originalImg retain];
     }
 }
 
@@ -33,25 +37,53 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    CGSize screenSize = [[UIScreen mainScreen]bounds].size;
+    
     imagePicker = [[UIImagePickerController alloc] init];
+    self.originalImg = [self.chosenImage image];
+    [originalImg retain];
+
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    [bannerView_ setFrame:CGRectMake(0, screenSize.height - self.toolbarScrollView.frame.size.height - 50, screenSize.width, 50)];
+    // Specify the ad unit ID.
+    bannerView_.adUnitID = MY_BANNER_UNIT_ID;
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    
+    // Initiate a generic request to load it with an ad.
+
+    GADRequest *request = [GADRequest request];
+    request.testDevices = [NSArray arrayWithObjects:
+                           @"3b9462c81bb3625a0fee115abbb10b30",
+                           nil];
+    [bannerView_ loadRequest:request];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    CGSize toolbarSize = [self.toolbarScrollView bounds].size;
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    [self.toolbarScrollView setContentSize:CGSizeMake(screenSize.width * 1.5, toolbarSize.height)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    NSLog(@"MMMMMMMMMMMMMMMMMMMM");
 }
 
-- (IBAction)chooseFromAlbum:(id)sender {
-    [_stateLabel setText:@"choose from album"];
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-    {
+- (void)chooseFromAlbum
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         imagePicker.delegate = self;
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        [self presentModalViewController:imagePicker animated:YES];
         [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-    else {
+    } else {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle:@"failed to access photo library"
                               message:@""
@@ -61,16 +93,14 @@
         [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
         [alert release];
     }
-
 }
 
-- (IBAction)chooseFromCamera:(id)sender {
-    NSLog(@"choose from camera");
-    [_stateLabel setText:@"choose from camera"];
+- (void)chooseFromCamera
+{
+//    NSLog(@"choose from camera");
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePicker.delegate = self;
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        [self presentModalViewController:imagePicker animated:YES];
         [self presentViewController:imagePicker animated:YES completion:nil];
     } else {
         UIAlertView *alert = [[UIAlertView alloc]
@@ -103,11 +133,11 @@
     return newImage;
 }
 
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
     UIImage *sourceImage = info[UIImagePickerControllerOriginalImage];
-
+    
+//  img compression
 //    NSData *imgData = UIImageJPEGRepresentation(sourceImage, 1);
 //    NSLog(@"Size of Image(bytes):%d",[imgData length]);
 //    if ([imgData length] > 3000000) {
@@ -126,8 +156,14 @@
     sourceImage = [self scaleImage:sourceImage scaledToSize:imageSize];
     
     UIImage *imageToDisplay = [self fixOrientation:sourceImage];
-    [self performSelectorInBackground:@selector(detectWithImage:) withObject:[imageToDisplay retain]];
+    
+    [self.chosenImage setImage:imageToDisplay];
+    self.originalImg = [self.chosenImage image];
+    [originalImg retain];
     [imagePicker dismissViewControllerAnimated:YES completion:nil];
+    
+    //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //    [self performSelectorInBackground:@selector(detectWithImage:) withObject:[imageToDisplay retain]];
 }
 
 - (UIImage *)fixOrientation:(UIImage *)aImage {
@@ -206,206 +242,6 @@
     return img;
 }
 
-// Use facepp SDK to detect faces
--(void) detectWithImage: (UIImage*) image {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    FaceppResult *result = [[FaceppAPI detection] detectWithURL:nil orImageData:UIImageJPEGRepresentation(image, 1) mode:FaceppDetectionModeNormal attribute:FaceppDetectionAttributeNone];
-    if (result.success) {
-        double image_width = [[result content][@"img_width"] doubleValue] *0.01f;
-        double image_height = [[result content][@"img_height"] doubleValue] * 0.01f;
-        
-        UIGraphicsBeginImageContext(image.size);
-        [image drawAtPoint:CGPointZero];
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
-        CGContextSetLineWidth(context, image_width * 0.7f);
-        
-        // draw rectangle in the image
-        int face_count = [[result content][@"face"] count];
-        for (int i=0; i<face_count; i++) {
-            double width = [[result content][@"face"][i][@"position"][@"width"] doubleValue];
-            double height = [[result content][@"face"][i][@"position"][@"height"] doubleValue];
-            CGRect rect = CGRectMake(([[result content][@"face"][i][@"position"][@"center"][@"x"] doubleValue] - width/2) * image_width,
-                                     ([[result content][@"face"][i][@"position"][@"center"][@"y"] doubleValue] - height/2) * image_height,
-                                     width * image_width,
-                                     height * image_height);
-            CGContextStrokeRect(context, rect);
-            NSString *faceId = [[result content][@"face"][i] objectForKey:@"face_id"];
-            NSLog(@"face_id: %@", faceId);
-            FaceppResult *landmarks = [[FaceppAPI detection] landmarkWithFaceId:faceId andType:FaceppLandmark83P];
-            for (int j=0; j<[[landmarks content] [@"result"] count]; j++) {
-                // left eye
-                double x1 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_bottom"][@"x"] doubleValue] * image_width;
-                double y1 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_bottom"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x1, y1, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x2 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_left_quarter"][@"x"] doubleValue] * image_width;
-                double y2 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_left_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x2, y2, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x3 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_left_corner"][@"x"] doubleValue] * image_width;
-                double y3 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_left_corner"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x3, y3, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x4 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_left_quarter"][@"x"] doubleValue] * image_width;
-                double y4 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_left_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x4, y4, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x5 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_top"][@"x"] doubleValue] * image_width;
-                double y5 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_top"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x5, y5, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x6 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_right_quarter"][@"x"] doubleValue] * image_width;
-                double y6 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_upper_right_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x6, y6, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x7 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_right_corner"][@"x"] doubleValue] * image_width;
-                double y7 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_right_corner"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x7, y7, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x8 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_right_quarter"][@"x"] doubleValue] * image_width;
-                double y8 = [[landmarks content][@"result"][j][@"landmark"][@"left_eye_lower_right_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x8, y8, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                // right eye
-                double x9 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_bottom"][@"x"] doubleValue] * image_width;
-                double y9 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_bottom"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x9, y9, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x10 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_left_quarter"][@"x"] doubleValue] * image_width;
-                double y10 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_left_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x10, y10, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x11 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_left_corner"][@"x"] doubleValue] * image_width;
-                double y11 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_left_corner"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x11, y11, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x12 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_left_quarter"][@"x"] doubleValue] * image_width;
-                double y12 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_left_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x12, y12, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x13 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_top"][@"x"] doubleValue] * image_width;
-                double y13 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_top"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x13, y13, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x14 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_right_quarter"][@"x"] doubleValue] * image_width;
-                double y14 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_upper_right_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x14, y14, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x15 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_right_corner"][@"x"] doubleValue] * image_width;
-                double y15 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_right_corner"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x15, y15, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                double x16 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_right_quarter"][@"x"] doubleValue] * image_width;
-                double y16 = [[landmarks content][@"result"][j][@"landmark"][@"right_eye_lower_right_quarter"][@"y"] doubleValue] * image_height;
-//                rect = CGRectMake(x16, y16, 1.0, 1.0);
-//                CGContextStrokeRect(context, rect);
-                
-                self.leftEyePoints = [[NSMutableArray alloc] init];
-                
-                CGPoint p;
-                NSValue* value;
-                
-                p = CGPointMake(x1, y1);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x2, y2);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x3, y3);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x4, y4);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x5, y5);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x6, y6);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x7, y7);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                p = CGPointMake(x8, y8);
-                value = [NSValue valueWithCGPoint:p];
-                [_leftEyePoints addObject:value];
-                
-
-                
-                self.rightEyePoints = [[NSMutableArray alloc] init];
-                p = CGPointMake(x9, y9);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x10, y10);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x11, y11);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x12, y12);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x13, y13);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x14, y14);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x15, y15);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-                p = CGPointMake(x16, y16);
-                value = [NSValue valueWithCGPoint:p];
-                [_rightEyePoints addObject:value];
-//                NSLog(@"left eye: %@", leftEyePoints);
-//                NSLog(@"right eye: %@", rightEyePoints);
-            }
-        }
-        
-        UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        float scale = 1.0f;
-        scale = MIN(scale, 280.0f/newImage.size.width);
-        scale = MIN(scale, 257.0f/newImage.size.height);
-        [_chosenImage setFrame:CGRectMake(_chosenImage.frame.origin.x,
-                                       _chosenImage.frame.origin.y,
-                                       newImage.size.width * scale,
-                                       newImage.size.height * scale)];
-        [_chosenImage setImage:newImage];
-    } else {
-        // some errors occurred
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:[NSString stringWithFormat:@"error message: %@", [result error].message]
-                              message:@""
-                              delegate:nil
-                              cancelButtonTitle:@"OK!"
-                              otherButtonTitles:nil];
-        [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
-        [alert release];
-    }
-    [image release];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    [pool release];
-}
-                                                        
 /*
 #pragma mark - Navigation
 
@@ -419,26 +255,91 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"root view prepare for segue");
-    UINavigationController *navController = (UINavigationController *) segue.destinationViewController;
-    ImageViewController *vc = (ImageViewController *)navController.topViewController;
-    if([vc isKindOfClass:[ImageViewController class]]) {
-        vc.img = [[self chosenImage] image];
-        vc.leftEyePoints = self.leftEyePoints;
-        vc.rightEyePoints = self.rightEyePoints;
-//        NSLog(@"left eye:%@", vc.leftEyePoints);
-    } else {
+    if([segue.identifier isEqualToString:@"more"]) {
         
+    } else {
+        ImageViewController *vc = (ImageViewController *) segue.destinationViewController;
+//        ImageViewController *vc = (ImageViewController *)navController.topViewController;
+//        if ([vc isKindOfClass:[ImageViewController class]]) {
+//            NSLog(@"111");
+//        }
+        vc.img = [[self chosenImage] image];
+        vc.whichBtn = segue.identifier;
+        //        NSLog(@"left eye:%@", vc.leftEyePoints);
     }
 }
 
-- (void)dealloc {
-    [imagePicker release];
-    [_stateLabel release];
-    [_chosenImage release];
+- (IBAction)addClicked:(id)sender;
+{
+    UIActionSheet *sheet=[[UIActionSheet alloc] initWithTitle:@"Select Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"From Camera" otherButtonTitles: @"From Album", nil];
+    [sheet showInView:self.view];
+}
+
+- (IBAction)saveClicked:(id)sender
+{
+    NSString *sharingWords = @"Test sharing";
+    UIImage *sharingImg = [self.chosenImage image];
     
-    [_leftEyePoints release];
-    [_rightEyePoints release];
+    NSArray *activityItems;
+    if (sharingImg != nil) {
+        activityItems = @[sharingWords, sharingImg];
+    } else {
+        activityItems = @[sharingWords];
+    }
+    UIActivityViewController *activityController =
+    [[UIActivityViewController alloc] initWithActivityItems:activityItems  applicationActivities:nil];
+    [self presentViewController:activityController animated:YES completion:nil];
+    [activityController release];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+//    NSString *string=[NSString stringWithFormat:@"%@ is clicked",[actionSheet buttonTitleAtIndex:buttonIndex]];
+    switch (buttonIndex) {
+        case FROM_CAMERA:
+            [self chooseFromCamera];
+            break;
+        case FROM_ALBUM:
+            [self chooseFromAlbum];
+            break;
+        default:
+            break;
+    }
+}
+
+- (IBAction)eyesClicked:(id)sender
+{
+    NSLog(@"eyes clicked");
+}
+
+- (IBAction)sketchClicked:(id)sender
+{
+    NSLog(@"sketch clicked");
+}
+
+- (IBAction)invertClicked:(id)sender
+{
+    NSLog(@"invert clicked");
+}
+
+- (IBAction)moreClicked:(id)sender
+{
+    NSLog(@"more clicked");
+}
+
+- (IBAction)revertClicked:(id)sender
+{
+    // confirm before reverting
+    [self.chosenImage setImage:originalImg];
+}
+
+- (void)dealloc {
+    // Don't release the bannerView_ if you are using ARC in your project
+    [bannerView_ release];
+    originalImg = nil;
+    [imagePicker release];
+    [_chosenImage release];
+    [_toolbarScrollView release];
     [super dealloc];
 }
 @end
