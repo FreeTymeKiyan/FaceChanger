@@ -154,16 +154,31 @@
     path.lineCapStyle = kCGLineCapRound; //线条拐角
     path.lineJoinStyle = kCGLineCapRound; //终点处理
     uint i = 0;
+    
+    CGPoint previousPoint;
     for (NSValue *point in arr) {
         if (i == 0) {
             [path moveToPoint:point.CGPointValue];
         } else {
-            [path addLineToPoint:point.CGPointValue];
+            CGPoint midPoint = midpoint(previousPoint, point.CGPointValue);
+            [path addQuadCurveToPoint:midPoint controlPoint:previousPoint];
+//            [path addLineToPoint:point.CGPointValue];
         }
+        previousPoint = point.CGPointValue;
         i++;
     }
-    [path closePath];
+    NSValue *firstPoint = [arr objectAtIndex:0];
+    CGPoint midPoint = midpoint(previousPoint, firstPoint.CGPointValue);
+    [path addQuadCurveToPoint:midPoint controlPoint:previousPoint];
+//    [path closePath];
     return path;
+}
+
+static CGPoint midpoint(CGPoint p0, CGPoint p1) {
+    return (CGPoint) {
+        (p0.x + p1.x) / 2.0,
+        (p0.y + p1.y) / 2.0
+    };
 }
 
 - (UIImage *)cropImg:(UIImage *) originalImg path:(UIBezierPath *) path
